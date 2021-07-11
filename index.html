@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>To-do List</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <meta name="author" content="SitePoint" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <form>
+        <input type="text" class="todo_input" placeholder="Add New Items..." />
+      </form>
+      <div class="notcomp">
+        <h3>Not Completed</h3>
+      </div>
+      <div class="comp">
+        <h3>Completed</h3>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      // prevent from refresh after pressing the enter button
+      $(".todo_input").keydown(function (e) {
+        if (e.keyCode == 13) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      // function to be executed when the field is being submitted by pressing the enter button
+      $(".todo_input").on("keyup", function (e) {
+        // will be triggered when the text field is not blank after pressing the enter button
+        if (e.keyCode == 13 && $(".todo_input").val() != "") {
+          // create a div and get the data from input field
+          let todo = $("<div class='todo'></div>").text($(".todo_input").val());
+          // create a complete button with animation
+          let done = $("<i class='far fa-check-circle'></i>").click(
+            function () {
+              let p = $(this).parent();
+              p.fadeOut(function () {
+                $(".comp").append(p);
+                p.fadeIn();
+              });
+            }
+          );
+          // create a remove button with animation
+          let del = $("<i class='fas fa-minus-circle'></i>").click(function () {
+            let p = $(this).parent();
+            p.fadeOut(function () {
+              p.remove();
+            });
+          });
+          // when getting the data, also get the done and del icon
+          todo.append(done, del);
+          // by default the task will go to "not completed" area first
+          $(".notcomp").append(todo);
+          // after the data is being transfer, clear the data from input field
+          $(".todo_input").val("");
+        }
+      });
+    });
+  </script>
+</html>
