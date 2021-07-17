@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-do List</title>
-    <meta name="description" content="The HTML5 Herald" />
-    <meta name="author" content="SitePoint" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
     />
+    <!-- Custom CSS -->
+    <title>To-do List</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png?" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,66 +29,49 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
   </head>
 
   <body>
     <div class="container">
-      <h1>To-do List</h1>
-      <form>
-        <input type="text" class="todo-input" placeholder="Add New Task..." />
-      </form>
-      <div class="item-list">
-        <div class="not-comp">
-          <h3>Not Completed</h3>
+      <div class="row">
+        <div class="col text-center"><h1>To-do List</h1></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <form>
+            <input
+              type="text"
+              class="todo-input"
+              placeholder="Add New Task..."
+            />
+          </form>
         </div>
-        <div class="comp">
-          <h3>Completed</h3>
+      </div>
+      <div class="item-list">
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div class="not-comp">
+              <h5 class="text-center">Not Completed</h5>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div class="comp">
+              <h5 class="text-center">Completed</h5>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </body>
-
-  <script>
-    $(document).ready(function () {
-      // prevent from refresh after pressing the enter button
-      $(".todo-input").keydown(function (e) {
-        if (e.keyCode == 13) {
-          e.preventDefault();
-          return false;
-        }
-      });
-      // function to be executed when the field is being submitted by pressing the enter button
-      $(".todo-input").on("keyup", function (e) {
-        // will be triggered when the text field is not blank after pressing the enter button
-        if (e.keyCode == 13 && $(".todo-input").val() != "") {
-          // create a div and get the data from input field
-          let todo = $("<div class='todo'></div>").text($(".todo-input").val());
-          // create a complete button with animation
-          let done = $("<i class='far fa-check-circle'></i>").click(
-            function () {
-              let p = $(this).parent();
-              p.fadeOut(function () {
-                $(".comp").append(p);
-                p.fadeIn();
-              });
-            }
-          );
-          // create a remove button with animation
-          let del = $("<i class='fas fa-minus-circle'></i>").click(function () {
-            let p = $(this).parent();
-            p.fadeOut(function () {
-              p.remove();
-            });
-          });
-          // when getting the data, also get the done and del icon
-          todo.append(done, del);
-          // by default the task will go to "not completed" area first
-          $(".not-comp").append(todo);
-          // after the data is being transfer, clear the data from input field
-          $(".todo-input").val("");
-        }
-      });
-    });
-  </script>
 </html>

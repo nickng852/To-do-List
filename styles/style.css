@@ -4,68 +4,55 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
 }
 
 body {
   min-height: 100vh;
   background-image: radial-gradient(circle 993px at 0.5% 50.5%, rgba(137, 171, 245, 0.37) 0%, #f5f7fc 100.2%);
-}
-
-.container {
-  margin: 3rem auto;
-  width: 600px;
+  font-family: "Quicksand", sans-serif;
 }
 
 .container h1 {
-  padding: 5rem;
+  margin: 5rem;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  color: #53585f;
-  text-align: center;
+  color: #484b4e;
 }
 
 .container input {
-  padding: 2rem;
-  width: 600px;
-  height: 60px;
+  padding: 1.5rem;
+  width: 100%;
   font-size: 1.05rem;
-  font-weight: 400;
   border: 0px;
   border-radius: 12px;
   outline: none;
-  -webkit-box-shadow: 0px 1px 20px  #f0f0f0;
-          box-shadow: 0px 1px 20px  #f0f0f0;
+  -webkit-box-shadow: 0px 5px 25px  #dbdbdb;
+          box-shadow: 0px 5px 25px  #dbdbdb;
 }
 
 .container .item-list {
-  margin-top: 4rem;
+  margin: 3rem 0;
 }
 
-.container h3 {
-  padding: 20px;
-  font-size: 1.3rem;
-  font-weight: 300;
+.container h5 {
+  margin: 2rem;
+  font-weight: 400;
   color: #747d8c;
-  text-align: center;
 }
 
 .todo {
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   padding: 1.5rem;
-  width: 600px;
   background-image: linear-gradient(110.3deg, #485563 8.8%, #7f92a6 95.1%);
   font-size: 1.05rem;
   color: #fff;
   border-radius: 12px;
-  -webkit-box-shadow: 0px 1px 20px  #f0f0f0;
-          box-shadow: 0px 1px 20px  #f0f0f0;
 }
 
 .todo i {
   float: right;
-  margin-left: 15px;
-  font-size: 1.3rem;
+  margin-left: 20px;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
